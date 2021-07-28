@@ -1,0 +1,31 @@
+ install java by this cmd "apt install openjdk-11-jre-headles -y"
+ check version " java -version"
+ cd /opt
+ wget "https://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.45/bin/apache-tomcat-9.0.45.zip"
+ unzip apache-tomcat-9.0.45.zip
+ If we want we can change name by cmd " mv apache-tomcat-9.0.45 tomcat
+ cd tomcat
+ cd bin/
+ chmod u+x *sh
+ ln -s /opt/tomcat/bin/startup.sh /usr/bin/StartTomcat
+ln -s /opt/tomcat/bin/shutdown.sh /usr/bin/StopTomcat
+cd /opt
+cd tomcat
+cd webapps
+cd manager
+cd META-INF/
+vim context.xml   
+
+   Here we need to comment out
+   <!--/  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+          allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
+
+restart tomcat
+cd /opt
+cd tomcat
+cd conf/
+vim  tomcat-users.xml
+Here we need to add user in last line 
+		<user username="admin" password="admin123" roles="admin-gui, manager-gui"/>
+
+   
